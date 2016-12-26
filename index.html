@@ -8,12 +8,11 @@
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
 		<link rel="stylesheet" href="index.css">
 	</head>
 	<body>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 		<h1>Kilo-Pound Converter</h1>
 
@@ -33,7 +32,7 @@
                                 <span class="glyphicon glyphicon-chevron-down"></span>
                             </div>
 							<div class="col-sm-8">
-								<input type="number" min="0" class="form-control "><br>
+								<input type="number" min="0" class="form-control weights" name="weights[]"><br>
 							</div>
 
 							<label for="inputWeight" class="col-sm-2 col-form-label"><div class="round blue">20</div></label>
@@ -42,7 +41,7 @@
                                 <span class="glyphicon glyphicon-chevron-down"></span>
                             </div>
 							<div class="col-sm-8">
-								<input type="number" min="0" class="form-control "><br>
+								<input type="number" min="0" class="form-control weights" name="weights[]"><br>
 							</div>
 							
 							<label for="inputWeight" class="col-sm-2 col-form-label"><div class="round yellow">15</div></label>
@@ -51,7 +50,7 @@
                                 <span class="glyphicon glyphicon-chevron-down"></span>
                             </div>
 							<div class="col-sm-8">
-								<input type="number" min="0" class="form-control "><br>
+								<input type="number" min="0" class="form-control weights" name="weights[]"><br>
 							</div>
 
 							<label for="inputWeight" class="col-sm-2 col-form-label"><div class="round green">10</div></label>
@@ -60,7 +59,7 @@
                                 <span class="glyphicon glyphicon-chevron-down"></span>
                             </div>
 							<div class="col-sm-8">
-								<input type="number" min="0" class="form-control "><br>
+								<input type="number" min="0" class="form-control weights" name="weights[]"><br>
 							</div>
 
 							<label for="inputWeight" class="col-sm-2 col-form-label"><div class="round">5</div></label>
@@ -69,7 +68,7 @@
                                 <span class="glyphicon glyphicon-chevron-down"></span>
                             </div>
 							<div class="col-sm-8">
-								<input type="number" min="0" class="form-control "><br>
+								<input type="number" min="0" class="form-control weights" name="weights[]"><br>
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -80,7 +79,7 @@
                                 <span class="glyphicon glyphicon-chevron-down"></span>
                             </div>
 							<div class="col-sm-8">
-								<input type="number" min="0" class="form-control "><br>
+								<input type="number" min="0" class="form-control weights" name="weights[]"><br>
 							</div>
 
 							<label for="inputWeight" class="col-sm-2 col-form-label"><div class="round blue">2.0</div></label>
@@ -89,7 +88,7 @@
                                 <span class="glyphicon glyphicon-chevron-down"></span>
                             </div>
 							<div class="col-sm-8">
-								<input type="number" min="0" class="form-control "><br>
+								<input type="number" min="0" class="form-control weights" name="weights[]"><br>
 							</div>
 							
 							<label for="inputWeight" class="col-sm-2 col-form-label"><div class="round yellow">1.5</div></label>
@@ -98,7 +97,7 @@
                                 <span class="glyphicon glyphicon-chevron-down"></span>
                             </div>
 							<div class="col-sm-8">
-								<input type="number" min="0" class="form-control "><br>
+								<input type="number" min="0" class="form-control weights" name="weights[]"><br>
 							</div>
 
 							<label for="inputWeight" class="col-sm-2 col-form-label"><div class="round green">1.0</div></label>
@@ -107,7 +106,7 @@
                                 <span class="glyphicon glyphicon-chevron-down"></span>
                             </div>
 							<div class="col-sm-8">
-								<input type="number" min="0" class="form-control "><br>
+								<input type="number" min="0" class="form-control weights" name="weights[]"><br>
 							</div>
 
 							<label for="inputWeight" class="col-sm-2 col-form-label"><div class="round">0.5</div></label>
@@ -116,11 +115,23 @@
                                 <span class="glyphicon glyphicon-chevron-down"></span>
                             </div>
 							<div class="col-sm-8">
-								<input type="number" min="0" class="form-control "><br>
+								<input type="number" min="0" class="form-control weights" name="weights[]"><br>
 							</div>
 
 						</div>
 					</div> 
+
+					<div class="barselection">
+						<h3>Select Bar</h3>
+						<label class="radio-inline"><input type="radio" name="bartype" checked="checked">Men's Bar</label>
+						<label class="radio-inline"><input type="radio" name="bartype">Women's Bar</label>
+						<label class="radio-inline"><input type="radio" name="bartype">No Bar</label>
+					</div>
+
+					<form class="bottom">
+						<button type="button" class="btn" id="convertBtn">Convert</button>
+						<div class="result"><p></p></div>
+					</form>
 				</div> <!-- End first column -->
 
 				<div class="col-md-2">
@@ -133,5 +144,65 @@
 
 			</div>
 		</div>
+
+		<script type="text/javascript">
+
+			// Convert # of plates to KG/LB
+			$('#convertBtn').click(function() { 
+				
+				// Get the weight inputs
+				var weightInputs = document.getElementsByClassName('weights');
+				
+				// Convert from JAVA collections to Array
+				var arr = [].slice.call(weightInputs);
+
+				var sum = 0;
+
+				// Loop through and add
+				for (var i = 0; i < arr.length; i++) {
+					if (!isNaN(arr[i].valueAsNumber)) {
+
+						switch(i) {
+							case 0: // 25
+								sum += (25 * arr[i].valueAsNumber);
+								break;
+							case 1: // 20
+								sum += (20 * arr[i].valueAsNumber);
+								break;
+							case 2: // 15
+								sum += (15 * arr[i].valueAsNumber);
+								break;
+							case 3: // 10
+								sum += (10 * arr[i].valueAsNumber);
+								break;
+							case 4: // 5
+								sum += (5 * arr[i].valueAsNumber);
+								break;
+							case 5: // 2.5
+								sum += (2.5 * arr[i].valueAsNumber);
+								break;
+							case 6: // 2.0
+								sum += (2 * arr[i].valueAsNumber);
+								break;
+							case 7: // 1.5
+								sum += (1.5 * arr[i].valueAsNumber);
+								break;
+							case 8: // 1.0
+								sum += (1 * arr[i].valueAsNumber);
+								break;
+							case 9: // 0.5
+								sum += (.5 * arr[i].valueAsNumber);
+								break;
+						}
+					}
+				}
+
+				
+				sum = sum * 2.2 + 44;
+				$('.result').text(sum);
+				//alert(sum);
+
+			});
+		</script>
 	</body>
 </html>
