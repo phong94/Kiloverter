@@ -28,7 +28,7 @@
 
 							<label for="inputWeight" class="col-sm-2 col-form-label"><div class="round red">25</div></label>
 							<div class="col-sm-1">
-                                <span class="glyphicon glyphicon-chevron-up"></span>
+                                <span class="glyphicon glyphicon-chevron-up" onClick="test()"></span>
                                 <span class="glyphicon glyphicon-chevron-down"></span>
                             </div>
 							<div class="col-sm-8">
@@ -123,13 +123,13 @@
 
 					<div class="barselection">
 						<h3>Select Bar</h3>
-						<label class="radio-inline"><input type="radio" name="bartype" checked="checked">Men's Bar</label>
-						<label class="radio-inline"><input type="radio" name="bartype">Women's Bar</label>
-						<label class="radio-inline"><input type="radio" name="bartype">No Bar</label>
+						<label class="radio-inline"><input type="radio" id="mensbar" name="bartype" checked="checked">Men's Bar</label>
+						<label class="radio-inline"><input type="radio" id="womensbar" name="bartype">Women's Bar</label>
+						<label class="radio-inline"><input type="radio" id="nobar" name="bartype">No Bar</label>
 					</div>
 
 					<form class="bottom">
-						<button type="button" class="btn" id="convertBtn">Convert</button>
+						<button type="button" class="btn convertbtn" id="convertBtn">Convert</button>
 						<div class="result"><p></p></div>
 					</form>
 				</div> <!-- End first column -->
@@ -147,6 +147,9 @@
 
 		<script type="text/javascript">
 
+			function test() {
+				console.log("TESTETSET");
+			}
 			// Convert # of plates to KG/LB
 			$('#convertBtn').click(function() { 
 				
@@ -197,10 +200,23 @@
 					}
 				}
 
-				
-				sum = sum * 2.2 + 44;
-				$('.result').text(sum);
-				//alert(sum);
+				if (document.getElementById('mensbar').checked) {
+					sum += 20;
+				}
+				else if (document.getElementById('womensbar').checked) {
+					sum += 15;
+				}
+				else if (document.getElementById('womensbar').checked) {
+					sum += 0;
+				}
+
+				// Weight in kg, save for output later
+				var kgs = sum;
+
+				// Weight in lb
+				sum = sum * 2.20;
+
+				$('.result').text(sum.toFixed(2) + 'lbs/' + kgs.toFixed(2) + 'kgs');
 
 			});
 		</script>
