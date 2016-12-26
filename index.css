@@ -9,3 +9,31 @@ h3 {
 h5 {
 	text-align:center;
 }
+
+.round {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    background-color: #222;    
+    color: #FFF;
+    text-align: center;  
+}
+
+.round.red {
+	background-color: #D0373A;
+}
+
+.round.blue {
+    background-color: #2E6292;
+}
+
+.round.yellow {
+	background-color: #E9CE43;
+}
+
+.round.green {
+    background-color: #42A129;
+}
