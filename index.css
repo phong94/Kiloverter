@@ -12,8 +12,8 @@ h5 {
 
 .round {
     display: inline-block;
-    height: 30px;
-    width: 30px;
+    height: 32px;
+    width: 32px;
     line-height: 30px;
     -moz-border-radius: 15px;
     border-radius: 15px;
