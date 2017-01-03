@@ -148,7 +148,7 @@
 
 					<form class="bottom">
 						<button type="button" class="btn convertbtn" id="convertBtn">Convert</button>
-						<div class="result"><p></p></div>
+						<div class="result resultstyle"><p></p></div>
 					</form>
 				</div> <!-- End first column -->
 
@@ -158,13 +158,14 @@
 
 				<div class="col-md-5" id="numberConversion">
 					<h3>Fill in Weight</h3>
-					Input <input type="text" class="form-control manualweight" value="0">
+					Input <input type="text" class="form-control manualweight" value="0"><br>
 					Converting from: 
 					<label class="radio-inline"><input type="radio" id="convertlbs" name="convertfrom" checked="checked">lbs</label>
 					<label class="radio-inline"><input type="radio" id="convertkg" name="convertfrom">kg</label>
+					<br><br>
 					<form class="bottom">
 						<button type="button" class="btn convertbtn" id="manualConvertBtn">Convert</button>
-						<div class="testresult"><p></p></div>
+						<div class="manualresult resultstyle"><p></p></div>
 					</form> 
 				</div> 
 
@@ -266,15 +267,17 @@
 				var sum = 0;
 				// Converting from lbs to kg
 				if (document.getElementById('convertlbs').checked) {
-					kgs = weightInputs * 0.5;
+					kgs = weightInputs * (1/2.2);
+					$('.manualresult').text(kgs.toFixed(2) + 'kgs');
 				
 				}
 				// Converting from kg to lbs
 				else if (document.getElementById('convertkg').checked) {
 					lbs = weightInputs * 2.2;
+					$('.manualresult').text(lbs.toFixed(2) + 'lbs');
 					
 				}
-				$('.testresult').text(lbs.toFixed(2) + 'lbs/' + kgs.toFixed(2) + 'kgs');
+				
 				
 			});
 
