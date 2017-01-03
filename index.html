@@ -163,7 +163,7 @@
 					<label class="radio-inline"><input type="radio" id="convertlbs" name="convertfrom" checked="checked">lbs</label>
 					<label class="radio-inline"><input type="radio" id="convertkg" name="convertfrom">kg</label>
 					<form class="bottom">
-						<button type="button" class="btn convertbtn" id="manuConvertBtn">Convert</button>
+						<button type="button" class="btn convertbtn" id="manualConvertBtn">Convert</button>
 						<div class="testresult"><p></p></div>
 					</form> 
 				</div> 
@@ -258,7 +258,7 @@
 
 			});
 
-			$('#manuConvertBtn').click(function() { 
+			$('#manualConvertBtn').click(function() { 
 			
 				var weightInputs = $('#numberConversion').find('input').val();
 				var lbs = 0;
