@@ -156,9 +156,19 @@
 					<h3><b>or<b></h3>
 				</div>
 
-				<div class="col-md-5">
+				<div class="col-md-5" id="numberConversion">
 					<h3>Fill in Weight</h3>
-				</div>
+					Input <input type="text" class="form-control manualweight" value="0">
+					Converting from: 
+					<label class="radio-inline"><input type="radio" id="convertlbs" name="convertfrom" checked="checked">lbs</label>
+					<label class="radio-inline"><input type="radio" id="convertkg" name="convertfrom">kg</label>
+					<form class="bottom">
+						<button type="button" class="btn convertbtn" id="manuConvertBtn">Convert</button>
+						<div class="testresult"><p></p></div>
+					</form> 
+				</div> 
+
+
 
 			</div>
 		</div>
@@ -247,6 +257,28 @@
 				$('.result').text(sum.toFixed(2) + 'lbs/' + kgs.toFixed(2) + 'kgs');
 
 			});
+
+			$('#manuConvertBtn').click(function() { 
+			
+				var weightInputs = $('#numberConversion').find('input').val();
+				var lbs = 0;
+				var kgs = 0;
+				var sum = 0;
+				// Converting from lbs to kg
+				if (document.getElementById('convertlbs').checked) {
+					kgs = weightInputs * 0.5;
+				
+				}
+				// Converting from kg to lbs
+				else if (document.getElementById('convertkg').checked) {
+					lbs = weightInputs * 2.2;
+					
+				}
+				$('.testresult').text(lbs.toFixed(2) + 'lbs/' + kgs.toFixed(2) + 'kgs');
+				
+			});
+
+
 		</script>
 	</body>
 </html>
